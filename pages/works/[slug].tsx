@@ -25,7 +25,7 @@ const WorkPage: NextPage<WorkPageProps> = ({ work }) => {
     <Layout pageTitle={work.title}>
       <div>
         {work.images && work.images.length > 0 && (
-          <div>
+          <div className="image-container">
             {work.images.map((image, index) => (
               <div
                 key={index}
@@ -73,6 +73,10 @@ const WorkPage: NextPage<WorkPageProps> = ({ work }) => {
         </div>
       </div>
       <style jsx>{`
+        .image-container {
+          margin-bottom: 3rem;
+          display: block;
+        }
         .headline {
           font-size: 1.5rem;
           margin-bottom: 0.5rem;
