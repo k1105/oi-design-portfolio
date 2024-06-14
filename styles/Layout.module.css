@@ -1,0 +1,21 @@
+.main {
+  width: 50vw;
+  margin: 0 auto;
+  margin-top: 100px;
+}
+
+.wide {
+  width: 70vw;
+}
+
+.headline {
+  margin-bottom: 2rem;
+  color: black;
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    width: 90vw;
+    margin-bottom: 10rem;
+  }
+}
