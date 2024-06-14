@@ -16,12 +16,6 @@ interface WorkPageProps {
 
 const WorkPage: NextPage<WorkPageProps> = ({ work }) => {
   const router = useRouter();
-  let categories = "";
-  if (work.category) {
-    for (const w of work.category) {
-      categories.length == 0 ? (categories += w) : (categories += ` / ${w}`);
-    }
-  }
 
   if (router.isFallback) {
     return <div>Loading...</div>;
@@ -60,7 +54,19 @@ const WorkPage: NextPage<WorkPageProps> = ({ work }) => {
           </h1>
           <div className={`${EnTitle.className} info`}>
             <p>{work.year}</p>
-            <p>{categories}</p>
+            {work.category && (
+              <p>
+                {(() => {
+                  let categories = "";
+                  for (const w of work.category) {
+                    categories.length == 0
+                      ? (categories += w)
+                      : (categories += ` / ${w}`);
+                  }
+                  return categories;
+                })()}
+              </p>
+            )}
           </div>
 
           <p className="description">{work.description}</p>
