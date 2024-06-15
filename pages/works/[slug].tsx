@@ -33,6 +33,7 @@ const WorkPage: NextPage<WorkPageProps> = ({ work }) => {
                   width: "100%",
                   height: "auto",
                   position: "relative",
+                  zIndex: "-1",
                   aspectRatio: `${image.width} / ${image.height}`,
                   marginBottom: "10px",
                 }}

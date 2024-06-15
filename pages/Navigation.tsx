@@ -1,13 +1,14 @@
 import Link from "next/link";
 import { Poppins } from "next/font/google";
 import HamburgerMenu from "./HamburgerMenu";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const PoppinsBold = Poppins({ weight: "800", subsets: ["latin"] });
 const PoppinsNormal = Poppins({ weight: "400", subsets: ["latin"] });
 
 export default function Navigation() {
   const hamburgerMenuWrapperRef = useRef<HTMLDivElement>(null);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
     <>
       <nav>
@@ -32,17 +33,19 @@ export default function Navigation() {
             </p>
           </div>
         </div>
-        <div
-          className="sp-nav"
-          onClick={() => (hamburgerMenuWrapperRef.current!.style.top = "0")}
-        >
+        <div className="sp-nav">
+          <div
+            className="trigger-button"
+            onClick={() => setIsOpen(!isOpen)}
+          ></div>
           <div
             ref={hamburgerMenuWrapperRef}
             style={{
               position: "fixed",
-              top: "-100vh",
+              top: `${isOpen ? "0" : "-100vh"}`,
               left: "0",
               transition: "all ease 0.5s",
+              zIndex: 90,
             }}
           >
             <HamburgerMenu />
@@ -103,7 +106,11 @@ export default function Navigation() {
 
           .sp-nav {
             display: block;
+          }
+
+          .trigger-button {
             position: fixed;
+            content: "";
             z-index: 99;
             right: 3vw;
             top: 30px;
@@ -111,6 +118,7 @@ export default function Navigation() {
             width: 30px;
             height: 30px;
             border-radius: 50%;
+            mix-blend-mode: difference;
           }
         }
       `}</style>

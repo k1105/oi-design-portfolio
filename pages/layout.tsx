@@ -17,14 +17,16 @@ export default function Layout({
   width = "nomal",
 }: {
   children: React.ReactNode;
-  pageTitle: string;
+  pageTitle?: string;
   headline?: string;
   width?: "wide" | "nomal";
 }) {
   return (
     <>
       <Head>
-        <title>{pageTitle} | SOBOKU DESIGN</title>
+        <title>
+          {pageTitle ? `${pageTitle} | SOBOKU DESIGN` : "SOBOKU DESIGN"}
+        </title>
         <meta property="og:title" content={`${pageTitle} | SOBOKU DESIGN`} />
         <meta property="og:description" content="portfolio by Yusei OI" />
         <meta property="og:type" content="website" />
