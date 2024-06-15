@@ -23,7 +23,7 @@ export default function HamburgerMenu() {
             <p className="link">Study</p>
           </Link>
         </div>
-        <p className="contact">
+        <p className={`${PoppinsNormal.className} contact`}>
           Tel: 080-8264-1961
           <br />
           Email: design.oioi.0127@gmail.com
@@ -57,7 +57,7 @@ export default function HamburgerMenu() {
 
           .contact {
             position: absolute;
-            bottom: 2rem;
+            bottom: calc(100lvh - 100svh + 5svh);
             font-size: 0.8rem;
           }
         }
