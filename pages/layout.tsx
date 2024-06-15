@@ -27,7 +27,10 @@ export default function Layout({
         <title>
           {pageTitle ? `${pageTitle} | SOBOKU DESIGN` : "SOBOKU DESIGN"}
         </title>
-        <meta property="og:title" content={`${pageTitle} | SOBOKU DESIGN`} />
+        <meta
+          property="og:title"
+          content={pageTitle ? `${pageTitle} | SOBOKU DESIGN` : "SOBOKU DESIGN"}
+        />
         <meta property="og:description" content="portfolio by Yusei OI" />
         <meta property="og:type" content="website" />
         {/* <meta property="og:url" content="https://daisan-kazoku.vercel.app" /> */}
@@ -37,7 +40,7 @@ export default function Layout({
         /> */}
         <meta
           property="og:site_name"
-          content={`${pageTitle} | SOBOKU DESIGN`}
+          content={pageTitle ? `${pageTitle} | SOBOKU DESIGN` : "SOBOKU DESIGN"}
         />
         <meta property="og:locale" content="ja_JP" />
         {/* Twitter Card tags */}
