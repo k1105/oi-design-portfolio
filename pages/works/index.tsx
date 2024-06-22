@@ -1,7 +1,13 @@
+import dynamic from "next/dynamic";
 import Layout from "../layout";
 import { CategoryProvider } from "../../components/CategoryContext";
-import CategoryContainer from "./CategoryContainer";
-import WorksContainer from "./WorksContainer";
+
+const CategoryContainer = dynamic(() => import("./CategoryContainer"), {
+  ssr: false,
+});
+const WorksContainer = dynamic(() => import("./WorksContainer"), {
+  ssr: false,
+});
 
 const Work = () => {
   return (
