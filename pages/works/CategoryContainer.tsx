@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { client } from "@/libs/client";
-import { useCategory } from "./CategoryContext";
+import { useCategory } from "../../components/CategoryContext";
 
 const CategoryContainer = () => {
   const [data, setData] = useState<Category[] | null>(null);
