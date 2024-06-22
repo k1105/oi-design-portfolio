@@ -8,7 +8,7 @@ declare global {
     releaseDate: string;
     title: string;
     description: string;
-    category: string[] | null;
+    category: Category[];
     year: string;
     credit: string;
     images:
@@ -19,6 +19,15 @@ declare global {
         }[]
       | null;
     slug: string;
+  };
+
+  type Category = {
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    revisedAt: string;
+    name: string;
   };
 }
 

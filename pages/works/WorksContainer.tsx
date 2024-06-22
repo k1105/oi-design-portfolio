@@ -1,10 +1,12 @@
-import WorkCard from "./WorkCard";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { client } from "@/libs/client";
+import { useCategory } from "./CategoryContext";
+import WorkCard from "./WorkCard";
 
-export default function WorksContainer() {
+const WorksContainer = () => {
   const [data, setData] = useState<Work[] | null>(null);
-  // propsからデータを使用
+  const { selectedCategory } = useCategory();
+
   useEffect(() => {
     async function fetchData() {
       const response = await client.get({ endpoint: "works" });
@@ -13,11 +15,18 @@ export default function WorksContainer() {
 
     fetchData();
   }, []);
+
+  const filteredData = data?.filter((work) =>
+    selectedCategory
+      ? work.category.some((c) => c.id === selectedCategory.id)
+      : true
+  );
+
   return (
     <>
       <div className="main">
-        {data ? (
-          data.map((work, index) => (
+        {filteredData ? (
+          filteredData.map((work, index) => (
             <div key={index}>
               <WorkCard
                 title={work.title}
@@ -50,19 +59,6 @@ export default function WorksContainer() {
       `}</style>
     </>
   );
-}
+};
 
-// getStaticProps関数。ビルド時に実行される
-export async function getStaticProps() {
-  // データの取得
-  const data = await client.get({
-    endpoint: "works",
-  });
-
-  console.log(data);
-
-  // 取得したデータをpropsとしてページコンポーネントに渡す
-  return {
-    props: { data }, // 注意: 実際にこのデータ構造がclient.getから返されるかはAPIの設計に依存します
-  };
-}
+export default WorksContainer;

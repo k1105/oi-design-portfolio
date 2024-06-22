@@ -61,8 +61,8 @@ const WorkPage: NextPage<WorkPageProps> = ({ work }) => {
                   let categories = "";
                   for (const w of work.category) {
                     categories.length == 0
-                      ? (categories += w)
-                      : (categories += ` / ${w}`);
+                      ? (categories += w.name)
+                      : (categories += ` / ${w.name}`);
                   }
                   return categories;
                 })()}
