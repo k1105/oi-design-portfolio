@@ -9,7 +9,7 @@ const CategoryContext = createContext<CategoryContextType | undefined>(
   undefined
 );
 
-const CategoryProvider = ({ children }: { children: ReactNode }) => {
+export const CategoryProvider = ({ children }: { children: ReactNode }) => {
   const [selectedCategory, setSelectedCategory] = useState<Category | null>(
     null
   );
@@ -29,4 +29,4 @@ export const useCategory = () => {
   return context;
 };
 
-export default CategoryProvider;
+export default CategoryContext;
